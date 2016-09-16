@@ -95,6 +95,7 @@ namespace MQGhost
             lines.Add("UserName_TB=" + UserName_TB.Text);
             lines.Add("Password_PB=" + Password_PB.Password);
             lines.Add("MSMQFormat_CB=" + MSMQFormat_CB.SelectedItem);
+            lines.Add("MSMQTransaction_ChB=" + Check2NO(MSMQTransaction_ChB.IsChecked));
             lines.Add("Persistent_ChB=" + Check2NO(Persistent_ChB.IsChecked));
 
             lines.Add("RevIP_TB=" + RevIP_TB.Text);
@@ -135,6 +136,7 @@ namespace MQGhost
                 UserName_TB.Text = iniSetting.Get("UserName_TB", IniDivide);
                 Password_PB.Password = iniSetting.Get("Password_PB", IniDivide);
                 MSMQFormat_CB.SelectedItem = iniSetting.Get("MSMQFormat_CB", IniDivide);
+                MSMQTransaction_ChB.IsChecked = NO2Check(iniSetting.Get("MSMQTransaction_ChB", IniDivide));
                 Persistent_ChB.IsChecked = NO2Check(iniSetting.Get("Persistent_ChB", IniDivide));
 
                 RevIP_TB.Text = iniSetting.Get("RevIP_TB", IniDivide);
@@ -170,6 +172,7 @@ namespace MQGhost
                 {
                     QConfig qConfig = wrapQConfig();
                     qConfig.PersistentMode = (QConfig.PersistentSet)Check2NO(Persistent_ChB.IsChecked);
+                    qConfig.IsTransaction = MSMQTransaction_ChB.IsChecked == true;
                     qConfig.RequiredReply = RequiredReply_ChB.IsChecked == true;
                     qConfig.Callback = ReceiveCallback;
 

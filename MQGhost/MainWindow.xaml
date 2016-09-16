@@ -21,6 +21,8 @@
             <PasswordBox x:Name="Password_PB" Width="100"/>
             <TextBlock Text="MSMQFormat" />
             <ComboBox x:Name="MSMQFormat_CB" Width="100"/>
+            <TextBlock Text="MSMQTransaction"/>
+            <CheckBox x:Name="MSMQTransaction_ChB"/>
             <TextBlock Text="Persistent"/>
             <CheckBox x:Name="Persistent_ChB"/>
         </StackPanel>
