@@ -1,0 +1,131 @@
+﻿<Window x:Class="MQGhost.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MQGhost" Height="520" Width="1050" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="26*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+        <!--1.Common Parmeter-->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock Text="MessageType" />
+            <ComboBox x:Name="MsgType_CB" Width="100"/>
+            <TextBlock Text="UserName" />
+            <TextBox x:Name="UserName_TB" Width="100"/>
+            <TextBlock Text="Password" />
+            <PasswordBox x:Name="Password_PB" Width="100"/>
+            <TextBlock Text="MSMQFormat" />
+            <ComboBox x:Name="MSMQFormat_CB" Width="100"/>
+            <TextBlock Text="Persistent"/>
+            <CheckBox x:Name="Persistent_ChB"/>
+        </StackPanel>
+        <!--1.Receive Message Parmeter-->
+        <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="IP"/>
+                <TextBox x:Name="RevIP_TB" Width="100"  Text="localhost"/>
+                <TextBlock Text="RevPort"/>
+                <TextBox x:Name="RevPort_TB" Width="50"/>
+                <StackPanel Visibility="Collapsed">
+                    <TextBlock Text="Label"/>
+                    <TextBox x:Name="RevLabel_TB" Width="100"/>
+                </StackPanel>
+                <TextBlock Text="ReceiveQueue"/>
+                <TextBox x:Name="ReceiveQueue_TB" Width="200" Text="TestQueue"/>
+                <TextBlock Text="HideMessage"/>
+                <CheckBox x:Name="HideMessage_ChB"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="  "/>
+            </StackPanel>
+        </StackPanel>
+        <!--1.Receive Message Body-->
+        <StackPanel Grid.Row="2">
+            <Button x:Name="Listening_Btn" Content="Start Listening..." Click="Listening_Btn_Click"/>
+            <Button x:Name="Pop_Btn" Content="Pop" Click="Pop_Btn_Click"/>
+            <Button x:Name="Tap_Btn" Content="Tap" Click="Tap_Btn_Click" />
+            <TextBox x:Name="Listening_TB" Height="140" MinHeight="140" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible">
+                <TextBox.Resources>
+                    <VisualBrush x:Key="HelpBrush" TileMode="None" Opacity="0.3" Stretch="None" AlignmentX="Left">
+                        <VisualBrush.Visual>
+                            <TextBlock FontStyle="Italic" Text="Show us the received message."/>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Resources>
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                            </Trigger>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </StackPanel>
+
+        <!--2.Send Message Parmeter-->
+        <StackPanel Grid.Row="3" Orientation="Vertical" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="IP"/>
+                <TextBox x:Name="SendIP_TB" Width="100"  Text="localhost"/>
+                <TextBlock Text="SendPort"/>
+                <TextBox x:Name="SendPort_TB" Width="50"/>
+                <TextBlock Text="Label"/>
+                <TextBox x:Name="SendLabel_TB" Width="100"/>
+                <TextBlock Text="SendQueue"/>
+                <TextBox x:Name="SendQueue_TB" Width="200" Text="TestQueue"/>
+                <TextBlock Text="SendAmount"/>
+                <TextBox x:Name="SendAmount_TB" Width="100" Text="1" HorizontalContentAlignment="Right"/>
+                <TextBlock Text="CreateQueue"/>
+                <CheckBox x:Name="CreateQueue_ChB"/>
+                <TextBlock Text="RequiredReply"/>
+                <CheckBox x:Name="RequiredReply_ChB"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="ConfirmPublishTimeout"/>
+                <TextBox x:Name="ConfirmPublishTimeout_TB" Width="100" Text="1" HorizontalContentAlignment="Right"/>
+            </StackPanel>
+        </StackPanel>
+        <!--2.Send Message Body-->
+        <StackPanel Grid.Row="4">
+            <Button x:Name="Sending_Btn" Content="Send Message" Click="Sending_Btn_Click"/>
+            <TextBox x:Name="Sending_TB" Height="134" MinHeight="134" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible">
+                <TextBox.Resources>
+                    <VisualBrush x:Key="HelpBrush" TileMode="None" Opacity="0.3" Stretch="None" AlignmentX="Left">
+                        <VisualBrush.Visual>
+                            <TextBlock FontStyle="Italic" Text="The message you want to send."/>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Resources>
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                            </Trigger>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="5">
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="Prompt_TB" Height="40" Width="300" TextWrapping="Wrap" />
+                <TextBox x:Name="Reply_TB" Height="40" Width="668" TextWrapping="Wrap" />
+                <TextBox x:Name="Clock_TB" Height="40" Text="00:00:00" VerticalContentAlignment="Center" FontSize="15"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

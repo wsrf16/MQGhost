@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Apache.NMS.ActiveMQ.Test</name>
+    </assembly>
+    <members>
+        <member name="M:Apache.NMS.ActiveMQ.Test.ThreadPoolExecutorTest.JoinPool(Apache.NMS.ActiveMQ.Threads.ThreadPoolExecutor)">
+            <summary>
+            Wait out termination of a thread pool or fail doing so
+            </summary>
+        </member>
+        <member name="M:Apache.NMS.ActiveMQ.Test.AMQNET375Test.OnConnectionResumed">
+            <summary>
+            Called when connection is resumed.
+            </summary>
+        </member>
+        <member name="M:Apache.NMS.ActiveMQ.Test.TempDestinationTest.TestTempDestOnlyConsumedByLocalConn">
+            <summary>
+            Make sure Temp destination can only be consumed by local connection
+            </summary>
+        </member>
+        <member name="M:Apache.NMS.ActiveMQ.Test.TempDestinationTest.TestTempQueueHoldsMessagesWithConsumers">
+            <summary>
+            Make sure that a temp queue does not drop message if there is an active consumers.
+            </summary>
+        </member>
+        <member name="M:Apache.NMS.ActiveMQ.Test.TempDestinationTest.TestTempQueueHoldsMessagesWithoutConsumers">
+            <summary>
+            Make sure that a temp queue does not drop message if there are no active consumers.
+            </summary>
+        </member>
+        <member name="M:Apache.NMS.ActiveMQ.Test.TempDestinationTest.TestTmpQueueWorksUnderLoad">
+            <summary>
+            Test temp queue works under load
+            </summary>
+        </member>
+        <member name="M:Apache.NMS.ActiveMQ.Test.TempDestinationTest.TestPublishFailsForClosedConnection">
+            <summary>
+            Make sure you cannot publish to a temp destination that does not exist anymore.
+            </summary>
+        </member>
+        <member name="M:Apache.NMS.ActiveMQ.Test.TempDestinationTest.TestPublishFailsForDestroyedTempDestination">
+            <summary>
+            Make sure you cannot publish to a temp destination that does not exist anymore.
+            </summary>
+        </member>
+        <member name="M:Apache.NMS.ActiveMQ.Test.TempDestinationTest.TestConsumeAfterPublishFailsForDestroyedTempDestination(Apache.NMS.MsgDeliveryMode)">
+            <summary>
+            Make sure consumers work after a publisher fails to publish to deleted temp destination.
+            </summary>
+        </member>
+        <member name="M:Apache.NMS.ActiveMQ.Test.TempDestinationTest.TestDeleteDestinationWithSubscribersFails">
+            <summary>
+            Test you can't delete a Destination with Active Subscribers
+            </summary>
+        </member>
+        <member name="M:Apache.NMS.ActiveMQ.Test.TempDestinationTest.TestCloseConnectionWithTempQueues">
+            <summary>
+            Test clean up of multiple temp destinations
+            </summary>
+        </member>
+    </members>
+</doc>
